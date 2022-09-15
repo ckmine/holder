@@ -1,2 +1,1 @@
-Successfully integrated Jenkins with Github. Doneeeeeeeeeeeeeeeeeeeeee
-dwd
+Successfully integrated Jenkins with Github.
