@@ -16,8 +16,9 @@
     </dependency>
   </dependencies>
   <build>
+	   <finalName>jenkins-git-integration</finalName>
 	  <plugins>
-    <finalName>jenkins-git-integration</finalName>
+   
     
     <!--                   Jacoco Plugin                   -->
 			   <plugin>
