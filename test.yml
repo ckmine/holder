@@ -1,0 +1,17 @@
+- hosts: deployment-server
+  tasks:
+
+   - copy:
+       src:  /var/lib/jenkins/workspace/Devops-project/blue.yml
+       dest: /root/
+
+   - name: ==> Delete deployment
+     shell: kubectl delete deployment web-server
+
+   - name: ==> Execute PlayBook
+     shell: kubectl delete service web-server
+
+
+   - name: ==> Execute PlayBook
+     shell: kubectl apply -f /root/blue.yml
+

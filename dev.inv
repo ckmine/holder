@@ -1,0 +1,2 @@
+[deployment-server]
+192.168.152.130 ansible_connection=ssh ansible_ssh_user=root ansible_ssh_pass=root
