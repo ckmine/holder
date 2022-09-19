@@ -16,6 +16,7 @@
     </dependency>
   </dependencies>
   <build>
+	  <plugins>
     <finalName>jenkins-git-integration</finalName>
     
     <!--                   Jacoco Plugin                   -->
@@ -38,6 +39,8 @@
 			     </execution>
 			    </executions>
 			   </plugin>
+		  
+	  </plugins>
     
   </build>
 </project>
