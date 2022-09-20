@@ -8,7 +8,7 @@ pipeline {
         deploymentName = "web-server"
     containerName = "web-server"
     serviceName = "web-server"
-    imageName = "master.mine.com/holder/$JOB_NAME:v1.$BUILD_ID1"
+    imageName = "master.mine.com/holder/$JOB_NAME:v1.$BUILD_ID"
         
     }
          
