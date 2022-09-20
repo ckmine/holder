@@ -67,10 +67,10 @@ any_user {
     input[i].Cmd == "user"
  }
 
-deny[msg] {
-    not any_user
-    msg = "Do not run as root, use USER instead"
-}
+#deny[msg] {
+#    not any_user
+ #   msg = "Do not run as root, use USER instead"
+#}
 
 # ... but do not root
 #forbidden_users = [
