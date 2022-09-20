@@ -46,6 +46,7 @@ deny[msg] {
     msg = sprintf("Line %d: Avoid curl bashing", [i])
 }
 
+/*
 # Do not upgrade your system packages
 warn[msg] {
     input[i].Cmd == "run"
@@ -54,7 +55,7 @@ warn[msg] {
     matches == true
     msg = sprintf("Line: %d: Do not upgrade your system packages: %s", [i, val])
 }
-
+*/
 # Do not use ADD if possible
 deny[msg] {
     input[i].Cmd == "add"
