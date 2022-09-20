@@ -22,9 +22,10 @@ pipeline {
         stage('Build Now') { 
             steps { 
               
-                  dir("/var/lib/jenkins/workspace/Devops-project") {
+                  dir("/var/lib/jenkins/workspace/mine-project") {
                     sh 'mvn -version'
                     sh 'mvn clean install'
+                      
                     echo "build succses"
                 }
 
@@ -40,19 +41,45 @@ pipeline {
               steps {
        withSonarQubeEnv('sonar') {
           
-       sh "mvn sonar:sonar -f /var/lib/jenkins/workspace/Devops-project/pom.xml"
+       sh "mvn sonar:sonar -f /var/lib/jenkins/workspace/mine-project/pom.xml"
+      
         }
    }
               }
               
+              
+              
+              
+              
+              stage ('Vulnerability Scan - ') {
+              steps {
+                  
+                 parallel   (
+       "Dependency Scan": {
+       	     	sh "mvn dependency-check:check"
+		},
+	 	  "Trivy Scan":{
+	 		    sh "bash trivy-docker-image-scan.sh"
+		     	},
+		   "OPA Conftest":{
+			sh 'docker run --rm -v $(pwd):/project openpolicyagent/conftest test --policy opa-docker-security.rego Dockerfile'
+		    }   	
+		             	
+   	                      )
+                    
+              }
+               }
+              
+           
               stage(' Rename and move Build To Perticuler Folder '){
                 steps {
                    sh 'mv /var/lib/jenkins/workspace/mine-project/target/jenkins-git-integration.war   /var/lib/jenkins/workspace/mine-project/epps-smartERP.war'
                   sh 'chmod -R 777 /var/lib/jenkins/workspace/mine-project/epps-smartERP.war'
                   
-                  
-                                
-                
+                  sh 'chmod -R 777 /var/lib/jenkins/workspace/mine-project/Dockerfile'
+                  sh 'chmod -R 777 /var/lib/jenkins/workspace/mine-project/shell.sh'
+                  sh 'chown jenkins:jenkins  /var/lib/jenkins/workspace/mine-project/trivy-docker-image-scan.sh'                
+                 
                                      }
                        }
                        
@@ -74,8 +101,7 @@ pipeline {
  // Building Docker images
     stage('Building image | Upload to Harbor Repo') {
       steps{
-      sh '/var/lib/jenkins/workspace/mine-project/shell.sh'  
-	                   
+            sh '/var/lib/jenkins/workspace/mine-project/shell.sh'  
     }
       
     }
@@ -89,4 +115,12 @@ pipeline {
 
                   
 }
+
+			 post{
+                      always{
+          
+              dependencyCheckPublisher pattern: 'target/dependency-check-report.xml'
+       }
+   }
+
     }
