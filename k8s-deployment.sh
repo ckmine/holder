@@ -1,3 +1,3 @@
 #!/bin/bash
-sed -i "s#replace#${imageName}#g" k8s_deployment_service.yaml
-kubectl -n default apply -f k8s_deployment_service.yaml
+sed -i "s#replace#${imageName}#g" blue.yml
+kubectl -n default apply -f blue.yml
