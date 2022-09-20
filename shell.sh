@@ -1,7 +1,6 @@
 #! /bin/bash
 cd /var/lib/jenkins/workspace/mine-project/
-su jenkins 
-sudo su
+sudo su - jenkins -s/bin/bash
 #docker logout   master.mine.com
  docker login -u admin --password-stdin admin@123 master.mine.com
 sudo  docker image build -t  $JOB_NAME:v1.$BUILD_ID .
