@@ -1,5 +1,5 @@
 #! /bin/bash
-cd /var/lib/jenkins/workspace/Devops-project/
+cd /var/lib/jenkins/workspace/mine-project/
 su jenkins
 #docker logout   master.mine.com
 docker login -u admin --password-stdin admin@123 master.mine.com
