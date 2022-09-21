@@ -16,11 +16,17 @@ spec:
         version: "1.0"
     spec:
       containers:
+          serviceAccountName: default
         - name: web-server
           image: replace
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
+          securityContext:
+          runAsNonRoot: true
+          runAsUser: 100
+          readOnlyRootFilesystem: true
+            
       imagePullSecrets:
            - name: docker-registry
 
