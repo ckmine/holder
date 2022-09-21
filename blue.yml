@@ -21,8 +21,6 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
-          securityContext:
-          readOnlyRootFilesystem: true
       serviceAccountName: default            
       imagePullSecrets:
            - name: docker-registry
