@@ -16,7 +16,6 @@ spec:
         version: "1.0"
     spec:
       containers:
-          serviceAccountName: default
         - name: web-server
           image: replace
           imagePullPolicy: Always
@@ -26,6 +25,7 @@ spec:
           runAsNonRoot: true
           runAsUser: 100
           readOnlyRootFilesystem: true
+      serviceAccountName: default    
             
       imagePullSecrets:
            - name: docker-registry
