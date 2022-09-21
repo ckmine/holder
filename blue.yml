@@ -23,7 +23,7 @@ spec:
             - containerPort: 8080
           securityContext:
           runAsNonRoot: true
-          runAsUser: 100
+          runAsUser: 129
           readOnlyRootFilesystem: true
       serviceAccountName: default    
             
