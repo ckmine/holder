@@ -9,6 +9,9 @@ pipeline {
     containerName = "web-server"
     serviceName = "web-server"
     imageName = "master.mine.com/holder/$JOB_NAME:v1.$BUILD_ID"
+     applicationURL="http://192.168.152.131:30010"
+    applicationURI="/epps-smartERP" 		   
+		   
         
     }
          
@@ -144,6 +147,25 @@ pipeline {
         )
        }
      }
+	    
+	     stage('Integration Tests - DEV') {
+         steps {
+         script {
+          try {
+            withKubeConfig([credentialsId: 'kubeconfig']) {
+               sh "bash integration-test.sh"
+             }
+            } catch (e) {
+             withKubeConfig([credentialsId: 'kubeconfig']) {
+               sh "kubectl -n default rollout undo deploy ${deploymentName}"
+             }
+             throw e
+           }
+         }
+       }
+     }
+	    
+	    
      
 }
 
