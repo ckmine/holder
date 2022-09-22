@@ -9,7 +9,7 @@ pipeline {
     containerName = "web-server"
     serviceName = "web-server"
     imageName = "master.mine.com/holder/$JOB_NAME:v1.$BUILD_ID"
-     applicationURL="http://192.168.152.131:30010"
+     applicationURL="http://192.168.152.131"
     applicationURI="epps-smartERP" 		   
 		   
         
