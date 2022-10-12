@@ -23,7 +23,7 @@ spec:
             - containerPort: 8080
       serviceAccountName: default            
       imagePullSecrets:
-           - name: docker-registry
+           - name: regcred
 
 
 ---
