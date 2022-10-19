@@ -5,5 +5,5 @@
 # You can add your own messages to each rule by appending them after a tab on each line.
 100001	IGNORE	http://192.168.152.131:30010/
 100000	IGNORE	http://192.168.152.131:30010/
-#10038 	IGNORE	http://192.168.152.131:30010/
+
  
