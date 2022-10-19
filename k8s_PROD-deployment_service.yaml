@@ -23,8 +23,8 @@ spec:
       - image: replace
         name: devsecops-container
         imagePullPolicy: Always
-          ports:
-            - containerPort: 8080           
+        ports:
+          - containerPort: 8080           
       imagePullSecrets:
            - name: regcred
         volumeMounts:
