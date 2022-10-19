@@ -21,7 +21,7 @@ exit_code=$?
 
 echo "Exit Code : $exit_code"
 
- if [[ ${exit_code} -ne 1 ]];  then
+ if [[ ${exit_code} -ne 2 ]];  then
     echo "OWASP ZAP Report has either Low/Medium/High Risk. Please check the HTML Report"
     exit 1;
    else
