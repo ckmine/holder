@@ -2,18 +2,18 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: devsecops
-  name: devsecops
+    app: web-server
+  name: web-server
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: devsecops
+      app: web-server
   strategy: {}
   template:
     metadata:
       labels:
-        app: devsecops
+        app: web-server
     spec:
       serviceAccountName: default
       volumes:
@@ -24,7 +24,7 @@ spec:
         name: devsecops-container
         imagePullPolicy: Always
         ports:
-           - containerPort: 8080 
+          - containerPort: 8080 
         volumeMounts:
           - mountPath: /tmp
             name: vol
@@ -42,7 +42,7 @@ spec:
           cpu: "200m"
          limits:
           memory: "512Mi"
-          cpu: "500m"             
+          cpu: "500m"          
       imagePullSecrets:
            - name: regcred
         
@@ -51,13 +51,13 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: devsecops
-  name: devsecops-svc
+    app: web-server
+  name: web-server
 spec:
   ports:
   - port: 8080
     protocol: TCP
     targetPort: 8080
   selector:
-    app: devsecops
+    app: web-server
   type: ClusterIP
