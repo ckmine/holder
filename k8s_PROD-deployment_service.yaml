@@ -1,44 +1,62 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  labels:
+    app: web-server
   name: web-server
 spec:
-  replicas: 1
-  strategy:
-    type: Recreate
+  replicas: 3
   selector:
-     matchLabels:
-         app: web-server
+    matchLabels:
+      app: web-server
+  strategy: {}
   template:
     metadata:
       labels:
         app: web-server
-        version: "1.0"
     spec:
+      serviceAccountName: default
+      volumes:
+      - name: vol
+        emptyDir: {}
       containers:
-        - name: web-server
-          image: replace
-          imagePullPolicy: Always
-          ports:
-            - containerPort: 8080
-      serviceAccountName: default            
+      - image: replace
+        name: devsecops-container
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 8080           
       imagePullSecrets:
            - name: regcred
-
-
+        volumeMounts:
+          - mountPath: /tmp
+            name: vol
+        securityContext:
+          capabilities:
+            drop:
+             - NET_RAW
+          runAsUser: 100
+          runAsNonRoot: true
+          readOnlyRootFilesystem: true
+          allowPrivilegeEscalation: false
+        resources:
+         requests:
+          memory: "256Mi"
+          cpu: "200m"
+         limits:
+          memory: "512Mi"
+          cpu: "500m"
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
- name: web-server
+  labels:
+    app: web-server
+  name: web-server
 spec:
- type: NodePort
- selector:
-   app: web-server
-   version: "1.0"
- ports:
- - port: 8080
-   targetPort: 8080
-   protocol: TCP
-   nodePort: ClusterIP
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: web-server
+  type: ClusterIP
