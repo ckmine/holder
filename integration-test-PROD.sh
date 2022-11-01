@@ -9,7 +9,7 @@ PORT=$(kubectl -n istio-system get svc istio-ingressgateway -o json | jq '.spec.
 
 
 echo $PORT
-echo $applicationURL:$PORT$applicationURI
+echo $applicationURL:$PORT/$applicationURI
 
 if [[ ! -z "$PORT" ]];
 then
