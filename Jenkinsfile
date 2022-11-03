@@ -46,12 +46,17 @@ pipeline {
              
               stage ('Code Quality scan') {
               steps {
-       // withSonarQubeEnv('sonar') {
+        withSonarQubeEnv('sonar') {
           
        sh "mvn clean verify sonar:sonar -Dsonar.projectKey=mine-project -Dsonar.host.url=http://192.168.152.130:9000 -Dsonar.login=sqp_181476661b16866f247bdcd671c74d0d3563bc98 "
       
         }
-   //}
+		      timeout(time: 2, unit: 'MINUTES') {
+           script {
+             waitForQualityGate abortPipeline: true
+           }
+         }
+   }
               }
               
               
