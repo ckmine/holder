@@ -60,7 +60,16 @@ pipeline {
               }
               
               
-              //synk
+         stage('Synk-Test') {
+      steps {
+        echo 'Testing...'
+        snykSecurity(
+          snykInstallation: 'snyk',
+          snykTokenId: '79e8233f-a9cd-4979-aad3-34495a7280d7',
+          // place other parameters here
+        )
+      }
+    }
               
               
               stage ('Vulnerability Scan - Docker ') {
