@@ -1,5 +1,5 @@
 pipeline { 
-         agent test
+         agent any
          
            environment {
         jenkins_server_url = "http://192.168.152.130:8080"
