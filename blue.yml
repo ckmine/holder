@@ -4,7 +4,7 @@ metadata:
   name: web-server
   namespace: default
 spec:
-  replicas: 5
+  replicas: 10
   strategy:
     type: Recreate
   selector:
