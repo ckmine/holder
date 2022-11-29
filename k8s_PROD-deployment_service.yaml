@@ -20,7 +20,7 @@ spec:
       - name: vol
         emptyDir: {}
       containers:
-      - image: replace
+      - image: master.mine.com/holder/mine-project
         name: devsecops-container
         imagePullPolicy: Always
         ports:
