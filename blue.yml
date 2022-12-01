@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: web-server
-  namespace: test
+  namespace: default
 spec:
   replicas: 1
   strategy:
@@ -33,7 +33,7 @@ apiVersion: v1
 kind: Service
 metadata:
  name: web-server
- namespace: test
+ namespace: default
 spec:
  type: NodePort
  selector:
