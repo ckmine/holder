@@ -48,7 +48,7 @@ pipeline {
               steps {
         withSonarQubeEnv('sonar') {
           
-       sh "mvn clean verify sonar:sonar -Dsonar.projectKey=mine-project -Dsonar.host.url=http://192.168.163.120:9000 -Dsonar.login=sqp_ec67ad65f94cf609d77afd05c74289a281ea261f
+       sh "mvn clean verify sonar:sonar -Dsonar.projectKey=mine-project -Dsonar.host.url=http://192.168.163.120:9000 -Dsonar.login=sqp_ec67ad65f94cf609d77afd05c74289a281ea261f"
         }
 		      timeout(time: 2, unit: 'HOURS') {
            script {
