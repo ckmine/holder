@@ -2,7 +2,7 @@ pipeline {
          agent any
          
            environment {
-        jenkins_server_url = "http://192.168.152.130:8080"
+        jenkins_server_url = "http://192.168.163.120:8080"
         notification_channel = 'devops'
         slack_url = 'https://hooks.slack.com/services/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'
         deploymentName = "web-server"
@@ -48,7 +48,7 @@ pipeline {
               steps {
         withSonarQubeEnv('sonar') {
           
-       sh "mvn clean verify sonar:sonar -Dsonar.projectKey=mine-project -Dsonar.host.url=http://192.168.152.130:9000 -Dsonar.login=sqp_181476661b16866f247bdcd671c74d0d3563bc98 "
+       sh "mvn clean verify sonar:sonar -Dsonar.projectKey=mine-project -Dsonar.host.url=http://192.168.163.120:9000 -Dsonar.login=sqp_181476661b16866f247bdcd671c74d0d3563bc98 "
       
         }
 		      timeout(time: 2, unit: 'HOURS') {
