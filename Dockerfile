@@ -8,7 +8,7 @@ ENV JAVA_HOME=/opt/jdk-17
 ENV PATH=$PATH:$JAVA_HOME/bin
 # CMD source ~/.bashrc
 RUN mkdir /opt/tomcat/
-RUN https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.71/bin/apache-tomcat-9.0.71.tar.gz
+RUN wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.71/bin/apache-tomcat-9.0.71.tar.gz
 RUN tar xvzf apache-tomcat-9.0.71.tar.gz
 RUN cp -rf apache-tomcat-9.0.71/* /opt/tomcat/
 WORKDIR /opt/tomcat
