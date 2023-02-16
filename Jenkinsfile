@@ -8,8 +8,8 @@ pipeline {
         deploymentName = "web-server"
     containerName = "web-server"
     serviceName = "web-server"
-    imageName = "master.mine.com/holder/$JOB_NAME:v1.$BUILD_ID"
-     applicationURL="http://192.168.152.131"
+    imageName = "masternode.mine.com/holder/$JOB_NAME:v1.$BUILD_ID"
+     applicationURL="http://192.168.163.121"
     applicationURI="epps-smartERP/" 		   
 		   
         
