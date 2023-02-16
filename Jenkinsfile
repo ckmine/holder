@@ -106,7 +106,7 @@ pipeline {
                        
                        stage ("Slack-Notify"){
                          steps {
-                            slackSend channel: 'devops', message: 'deployment successfully'
+                            slackSend channel: 'devops-pipeline', message: 'deployment successfully'
                          }
                        }
 
