@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: web-server
-          image: master.mine.com/holder/mine-project
+          image: replace
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
