@@ -11,7 +11,7 @@ docker run --rm  -v  /var/run/docker.sock:/var/run/docker.sock -v $WORKSPACE:/ro
     echo "Exit Code : $exit_code"
 
     # Check scan results
-    if [[ ${exit_code} == 0 ]]; then
+    if [[ ${exit_code} == 1 ]]; then
         echo "Image scanning failed. Vulnerabilities found"
         exit 1;
     else
