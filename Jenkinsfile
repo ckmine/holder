@@ -43,7 +43,7 @@ pipeline {
             
             stage('Jmeter-Test') {
        steps {
-                sh "/root/apache-jmeter-5.5/bin/jmeter.sh -Jjmeter.save.saveservice.output_format=xml -n -t /root/apache-jmeter-5.5/bin/JmeterJenkinsIntegrationTest.jmx -l /root/apache-jmeter-5.5/bin/JenkinsJmeter.jtl"
+                sh "sh /var/lib/jenkins/workspace/mine-project/apache-jmeter-5.5/bin/jmeter.sh  -Jjmeter.save.saveservice.output_format=xml -n -t /var/lib/jenkins/workspace/mine-project/apache-jmeter-5.5/bin/JmeterJenkinsIntegrationTest.jmx -l /var/lib/jenkins/workspace/mine-project/apache-jmeter-5.5/bin/JenkinsJmeter.jtl"
          }
        }
      
