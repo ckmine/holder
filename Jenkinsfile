@@ -46,7 +46,7 @@ pipeline {
                 sh "jmeter.sh -Jjmeter.save.saveservice.output_format=xml -n -t /root/apache-jmeter-5.5/bin/JmeterJenkinsIntegrationTest.jmx -l /root/apache-jmeter-5.5/bin/JenkinsJmeter.jtl"
          }
        }
-     }
+     
             
              
               stage ('Code Quality scan') {
