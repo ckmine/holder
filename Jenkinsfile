@@ -4,7 +4,7 @@ pipeline {
               label 'kubepod'
                  containerTemplate {
                         name 'jnlp'
-                        image 'jenkins/jnlp-slave'
+                        image 'jenkins/inbound-agent:latest'
                         ttyEnabled true
               }
           }
