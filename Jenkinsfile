@@ -1,14 +1,6 @@
 pipeline { 
-         agent {
-        kubernetes {
-             label 'kubepod'       
-             containerTemplate {         
-                 name 'kube'         
-                 image 'jenkins/jnlp-slave:latest'         
-                 ttyEnabled true               
-                 }    
-                  }   
-                  } 
+         agent any
+        
          
            environment {
         jenkins_server_url = "http://192.168.163.120:8080"
