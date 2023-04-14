@@ -1,6 +1,6 @@
 pipeline { 
          agent {
-         kubernetes {       
+        kubernetes {
              label 'kubepod'       
              containerTemplate {         
                  name 'kube'         
