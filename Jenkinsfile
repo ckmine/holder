@@ -1,14 +1,14 @@
 pipeline { 
          agent {
-         kubernetes {       
-             label 'kubepod'       
-             containerTemplate {         
-                 name 'kube'         
-                 image 'harborapp.lab31.sunfire.lab/ubi-cicd/jnlp-slave:latest'         
-                 ttyEnabled true               
-                 }    
-                  }   
-                  } 
+          kubernetes {
+              label 'kubepod'
+                 containerTemplate {
+                        name 'jnlp'
+                        image 'jenkins/jnlp-slave'
+                        ttyEnabled true
+              }
+          }
+         }
            environment {
         jenkins_server_url = "http://192.168.163.120:8080"
         notification_channel = 'devops'
