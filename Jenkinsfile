@@ -1,14 +1,5 @@
 pipeline { 
-         agent {
-          kubernetes {
-              label 'kubepod'
-                 containerTemplate {
-                        name 'jnlp-slave'
-                        image 'jenkins/inbound-agent:latest'
-                        ttyEnabled true
-              }
-          }
-         }
+         agent any
            environment {
         jenkins_server_url = "http://192.168.163.120:8080"
         notification_channel = 'devops'
